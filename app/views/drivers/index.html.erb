@@ -1,0 +1,12 @@
+<h1>Drivers List</h1>
+
+<ul>
+  <% @drivers.each do |driver|  %>
+    <li>
+      ID:<%= driver[:id] %> 
+      <%= link_to driver.name, drivers_path(driver.id) %>
+      : <%= driver[:vin] %>
+      : <%= driver[:available] %>
+    </li>
+  <% end %>
+</ul>

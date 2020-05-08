@@ -1,26 +1,26 @@
 require 'csv'
 
-# DRIVER_FILE = Rails.root.join('db', 'seed_data', 'drivers.csv')
-# puts "Loading raw driver data from #{DRIVER_FILE}"
+DRIVER_FILE = Rails.root.join('db', 'seed_data', 'drivers.csv')
+puts "Loading raw driver data from #{DRIVER_FILE}"
 
-# driver_failures = []
-# CSV.foreach(DRIVER_FILE, :headers => true) do |row|
-#   driver = Driver.new
-#   driver.id = row['id']
-#   driver.name = row['name']
-#   driver.vin = row['vin']
-#   driver.available = row['available']
-#   successful = driver.save
-#   if !successful
-#     driver_failures << driver
-#     puts "Failed to save driver: #{driver.inspect}"
-#   else
-#     puts "Created driver: #{driver.inspect}"
-#   end
-# end
+driver_failures = []
+CSV.foreach(DRIVER_FILE, :headers => true) do |row|
+  driver = Driver.new
+  driver.id = row['id']
+  driver.name = row['name']
+  driver.vin = row['vin']
+  driver.available = row['available']
+  successful = driver.save
+  if !successful
+    driver_failures << driver
+    puts "Failed to save driver: #{driver.inspect}"
+  else
+    puts "Created driver: #{driver.inspect}"
+  end
+end
 
-# puts "Added #{Driver.count} driver records"
-# puts "#{driver_failures.length} drivers failed to save"
+puts "Added #{Driver.count} driver records"
+puts "#{driver_failures.length} drivers failed to save"
 
 
 
@@ -47,29 +47,29 @@ puts "#{passenger_failures.length} passengers failed to save"
 
 
 
-# TRIP_FILE = Rails.root.join('db', 'seed_data', 'trips.csv')
-# puts "Loading raw trip data from #{TRIP_FILE}"
+TRIP_FILE = Rails.root.join('db', 'seed_data', 'trips.csv')
+puts "Loading raw trip data from #{TRIP_FILE}"
 
-# trip_failures = []
-# CSV.foreach(TRIP_FILE, :headers => true) do |row|
-#   trip = Trip.new
-#   trip.id = row['id']
-#   trip.driver_id = row['driver_id']
-#   trip.passenger_id = row['passenger_id']
-#   trip.date = Date.strptime(row['date'], '%Y-%m-%d')
-#   trip.rating = row['rating']
-#   trip.cost = row['cost']
-#   successful = trip.save
-#   if !successful
-#     trip_failures << trip
-#     puts "Failed to save trip: #{trip.inspect}"
-#   else
-#     puts "Created trip: #{trip.inspect}"
-#   end
-# end
+trip_failures = []
+CSV.foreach(TRIP_FILE, :headers => true) do |row|
+  trip = Trip.new
+  trip.id = row['id']
+  trip.driver_id = row['driver_id']
+  trip.passenger_id = row['passenger_id']
+  trip.date = Date.strptime(row['date'], '%Y-%m-%d')
+  trip.rating = row['rating']
+  trip.cost = row['cost']
+  successful = trip.save
+  if !successful
+    trip_failures << trip
+    puts "Failed to save trip: #{trip.inspect}"
+  else
+    puts "Created trip: #{trip.inspect}"
+  end
+end
 
-# puts "Added #{Trip.count} trip records"
-# puts "#{trip_failures.length} trips failed to save"
+puts "Added #{Trip.count} trip records"
+puts "#{trip_failures.length} trips failed to save"
 
 
 # Since we set the primary key (the ID) manually on each of the
