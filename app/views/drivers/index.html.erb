@@ -3,10 +3,10 @@
 <ul>
   <% @drivers.each do |driver|  %>
     <li>
-      ID:<%= driver[:id] %> 
-      <%= link_to driver.name, drivers_path(driver.id) %>
-      : <%= driver[:vin] %>
-      : <%= driver[:available] %>
+      ID: <%= driver[:id] %> 
+      Name: <%= link_to driver.name, drivers_path(driver.id) %>
+      VIN: <%= driver[:vin] %>
+      Available: <%= driver[:available] %>
     </li>
   <% end %>
 </ul>
