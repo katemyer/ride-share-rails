@@ -1,0 +1,11 @@
+<h1>Passengers List</h1>
+
+<ul>
+  <% @passengers.each do |passenger|  %>
+    <li>
+      ID:<%= passenger[:id] %> 
+      <%= link_to passenger.name, passengers_path(passenger.id) %>
+      : <%= passenger[:phone_num] %>
+    </li>
+  <% end %>
+</ul>
