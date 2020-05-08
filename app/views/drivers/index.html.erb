@@ -7,6 +7,9 @@
       Name: <%= link_to driver.name, driver_path(driver.id) %>
       VIN: <%= driver[:vin] %>
       Available: <%= driver[:available] %>
+
+      <%= link_to "Edit Driver", edit_driver_path(driver.id), method: :get %> 
+      <%= link_to "Delete Driver", driver_path(driver.id), method: :delete, data: {confirm: "Are you super sure?"}%>
     </li>
   <% end %>
 </ul>

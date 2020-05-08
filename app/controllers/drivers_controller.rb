@@ -21,7 +21,7 @@ class DriversController < ApplicationController
     #instantiate a new driver
     @driver = Driver.new(name: params[:driver][:name], vin: params[:driver][:vin], available: params[:driver][:available])
     if @driver.save # save returns true if the database insert succeeds
-      #redirect_to root_path # go to the index so we can see the task in the list
+      #redirect_to root_path # go to the index so we can see the driver in the list
       redirect_to driver_path(@driver.id) #goes to page where drivers/:id page
       return
     else # save failed :(
@@ -34,46 +34,46 @@ class DriversController < ApplicationController
     @driver = Driver.new
   end
   
-  # def edit
-  #   @task = Task.find_by(id: params[:id])
+  def edit
+    @driver = Driver.find_by(id: params[:id])
 
-  #   if @task.nil?
-  #     #head :not_found
-  #     redirect_to root_path
-  #     return
-  #   end
-  # end
+    if @driver.nil?
+      #head :not_found
+      redirect_to root_path
+      return
+    end
+  end
 
-  # def update
-  #   @task = Task.find_by(id: params[:id])
-  #   if @task.nil?
-  #     head :not_found
-  #     return
-  #   elsif @task.update(
-  #     name: params[:task][:name], 
-  #     description: params[:task][:description],
-  #     completed_at: params[:task][:completed_at]
-  #   )
-  #     redirect_to task_path # go to the index so we can see the book in the list
-  #     return
-  #   else # save failed :(
-  #     render :edit # show the new book form view again
-  #     return
-  #   end
-  # end
+  def update
+    @driver = Driver.find_by(id: params[:id])
+    if @driver.nil?
+      head :not_found
+      return
+    elsif @driver.update(
+      name: params[:driver][:name], 
+      vin: params[:driver][:vin],
+      available: params[:driver][:available]
+    )
+      redirect_to driver_path # go to the index so we can see the book in the list
+      return
+    else # save failed :(
+      render :edit # show the new driver form view again
+      return
+    end
+  end
 
-  # def destroy
-  #   task_id = params[:id]
-  #   @task = Task.find_by_id(task_id)
+  def destroy
+    driver_id = params[:id]
+    @driver = Driver.find_by_id(driver_id)
 
-  #   if @task.nil?
-  #     head :not_found
-  #     return
-  #   end
+    if @driver.nil?
+      head :not_found
+      return
+    end
 
-  #   @task.destroy
+    @driver.destroy
 
-  #   redirect_to tasks_path
-  #   return
-  # end
+    redirect_to drivers_path
+    return
+  end
 end

@@ -1,0 +1,14 @@
+<%= form_with model: @driver, class: 'edit-driver' do |f| %>
+  <p>Please provide the following information to edit your driver in our database:</p>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :vin %>
+  <%= f.text_field :vin %>
+
+  <%= f.label :available %>
+  <%= f.text_field :available %>
+
+  <%= f.submit "Edit Driver", class: "driver-button" %>
+<% end %>
