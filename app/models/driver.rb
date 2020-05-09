@@ -1,5 +1,9 @@
 class Driver < ApplicationRecord
-  # plural because many trips could be associated with this single driver
+  #validations
+  validates :name, presence: true
+  validates :vin, presence: true
+
+  # relationship: plural because many trips could be associated with this single driver
   has_many :trips
 
   #Total Revenue Method
