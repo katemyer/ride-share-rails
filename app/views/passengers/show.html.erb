@@ -5,13 +5,13 @@
     <th>ID</th>
     <th>Name</th>
     <th>Phone Number</th>
+    <th>Total Expenses</th>
   </tr>
   <tr>
     <td><%= @passenger[:id] %> </td>
     <td><%= link_to @passenger.name, passenger_path(@passenger.id) %></td>
-    <td><%= @passenger[:name] %></td>
     <td><%= @passenger[:phone_num] %></td>
-    <td><%= @passenger.total_expenses %></td>
+    <td>$<%= @passenger.total_expenses %></td>
     <td><%= link_to "Edit", edit_passenger_path(@passenger.id), method: :get %> </td>
     <td><%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you super sure?"}%></td>
   </tr>
