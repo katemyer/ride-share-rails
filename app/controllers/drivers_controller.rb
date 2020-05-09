@@ -22,7 +22,8 @@ class DriversController < ApplicationController
   # how to use it with postman https://medium.com/@oliver.seq/creating-a-rest-api-with-rails-2a07f548e5dc
   def create 
     #instantiate a new driver
-    @driver = Driver.new(name: params[:driver][:name], vin: params[:driver][:vin], available: params[:driver][:available])
+    # @driver = Driver.new(name: params[:driver][:name], vin: params[:driver][:vin], available: params[:driver][:available])
+    @driver = Driver.new(driver_params)
     if @driver.save # save returns true if the database insert succeeds
       #redirect_to root_path # go to the index so we can see the driver in the list
       redirect_to driver_path(@driver.id) #goes to page where drivers/:id page
@@ -79,4 +80,10 @@ class DriversController < ApplicationController
     redirect_to drivers_path
     return
   end
+end
+
+private
+
+def driver_params
+  return params.require(:driver).permit(:name, :vin, :available)
 end
