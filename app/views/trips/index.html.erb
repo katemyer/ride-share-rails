@@ -1,14 +1,27 @@
 <h1>Trips List</h1>
 
-<ul>
-  <% @trips.each do |trip|  %>
-    <li>
-      ID: <%= link_to trip.id, trips_path(trip.id) %>
-      Driver_id: <%= trip[:driver_id] %>
-      Passenger_id: <%= trip[:passenger_id] %>
-      Date: <%= trip[:date] %>
-      Rating: <%= trip[:rating] %>
-      Cost: <%= trip[:cost] %>
-    </li>
+<table style="text-align: center;">
+  <tr>
+    <th>ID</th>
+    <th>Driver</th>
+    <th>Passenger</th>
+    <th>Date</th>
+    <th>Rating</th>
+    <th>Cost</th>
+  </tr>
+    <% @trips.each do |trip|  %>
+  <tr>
+    <td><%= link_to trip.id, trips_path(trip.id) %></td>
+    <td><%= trip.driver.name %></td>
+    <td><%= trip.passenger.name %></td>
+    <td><%= trip[:date] %></td>
+    <td><%= trip[:rating] %></td>
+    <td><%= trip[:cost] %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
+
+
+
+
+

@@ -1,12 +1,18 @@
 <h1>Passengers List</h1>
 
-<ul>
-  <% @passengers.each do |passenger|  %>
-    <li>
-      ID: <%= passenger[:id] %> 
-      Name: <%= link_to passenger.name, passengers_path(passenger.id) %>
-      Phone: <%= passenger[:phone_num] %>
-    </li>
+
+<table style="text-align: center;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Phone</th>
+  </tr>
+    <% @passengers.each do |passenger|  %>
+  <tr>
+    <td><%= passenger[:id] %> </td>
+    <td><%= link_to passenger.name, passengers_path(passenger.id) %></td>
+    <td><%= passenger[:phone_num] %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
 
