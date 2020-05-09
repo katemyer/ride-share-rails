@@ -6,6 +6,8 @@
     <th>Name</th>
     <th>VIN</th>
     <th>Available</th>
+    <th>Total Revenue</th>
+    <th>Average Rating</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -14,7 +16,32 @@
     <td><%= link_to @driver.name, driver_path(@driver.id) %></td>
     <td><%= @driver[:vin] %></td>
     <td><%= @driver[:available] %></td>
+    <td>$<%= @driver.total_revenue.round(2) %></td>
+    <td><%= @driver.average_rating.round(2) %></td>
     <td><%= link_to "Edit", edit_driver_path(@driver.id), method: :get %> </td>
     <td><%= link_to "Delete", driver_path(@driver.id), method: :delete, data: {confirm: "Are you super sure?"}%></td>
   </tr>
+</table>
+
+<h1>Trip History</h1>
+
+<table style="text-align: center;">
+  <tr>
+    <th>ID</th>
+    <th>Driver</th>
+    <th>Passenger</th>
+    <th>Date</th>
+    <th>Rating</th>
+    <th>Cost</th>
+  </tr>
+    <% @trips.each do |trip|  %>
+  <tr>
+    <td><%= link_to trip.id, trips_path(trip.id) %></td>
+    <td><%= trip.driver.name %></td>
+    <td><%= trip.passenger.name %></td>
+    <td><%= trip[:date] %></td>
+    <td><%= trip[:rating] %></td>
+    <td><%= trip[:cost] %></td>
+  </tr>
+  <% end %>
 </table>

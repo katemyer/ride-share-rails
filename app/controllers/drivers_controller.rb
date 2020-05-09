@@ -8,6 +8,9 @@ class DriversController < ApplicationController
   def show
     driver_id = params[:id].to_i
     @driver = Driver.find_by_id(driver_id)
+    #based on driver, can find all associated trips
+    #@trips can now be accessed by the view
+    @trips = @driver.trips
    if @driver.nil?
       #redirect_to :action => 'index'
       head :not_found
