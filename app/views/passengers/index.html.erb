@@ -1,5 +1,5 @@
 <h1>Passengers List</h1>
-
+<%= link_to "Add Passenger", new_passenger_path %>
 
 <table style="text-align: center;">
   <tr>
@@ -10,7 +10,7 @@
     <% @passengers.each do |passenger|  %>
   <tr>
     <td><%= passenger[:id] %> </td>
-    <td><%= link_to passenger.name, passengers_path(passenger.id) %></td>
+    <td><%= link_to passenger.name, passenger_path(passenger.id) %></td>
     <td><%= passenger[:phone_num] %></td>
   </tr>
   <% end %>
