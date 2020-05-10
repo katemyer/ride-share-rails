@@ -3,6 +3,7 @@
 
 <table style="text-align: center;">
   <tr>
+    <th>Trip ID</th>
     <th>Trip Details</th>
     <th>Driver ID</th>
     <th>Passenger ID</th>
@@ -12,8 +13,9 @@
   </tr>
     <% @trips.each do |trip|  %>
   <tr>
-  <td><%= link_to "Show details", trip %></td>
-  <td><%= trip.driver_id %></td>
+    <td><%= trip.id %></td>
+    <td><%= link_to "Show details", trip %></td>
+    <td><%= trip.driver_id %></td>
     <td><%= trip.passenger_id %></td>
     <td><%= trip[:date] %></td>
     <td><%= trip[:rating] %></td>

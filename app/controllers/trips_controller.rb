@@ -19,12 +19,14 @@ class TripsController < ApplicationController
     #getting first available driver from db
     @driver = Driver.where(available: true).first 
     @trip = Trip.new
-    passenger_id = params[:passenger_id]
-    if passenger_id.nil?
-      @passengers = Passenger.all
-    else
-      @passengers = [Passenger.find_by(id: passenger_id)]
-    end
+    # passenger_id = params[:passenger_id]
+    @passenger_id = params.fetch(:passenger_id, "").to_i
+    # puts passenger_id
+    # if passenger_id.nil?
+    #   @passengers = Passenger.all
+    # else
+    #   @passengers = [Passenger.find_by(id: passenger_id)]
+    # end
   end
 
 #   def create
@@ -79,7 +81,7 @@ class TripsController < ApplicationController
       return
     end
     @trip.destroy
-    redirect_to trip_path
+    redirect_to trips_path
     return
   end 
   
