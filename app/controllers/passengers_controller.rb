@@ -17,7 +17,7 @@ class PassengersController < ApplicationController
 
   def new
     @passenger = Passenger.new
-end
+  end
 
   def edit
     @passenger = Passenger.find_by(id: params[:id])
