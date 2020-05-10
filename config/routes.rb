@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :passengers, only: [:index, :show, :create, :new, :edit, :update, :destroy]
   
-  resources :trips, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+  resources :trips#, only: [:index, :show, :create, :new, :edit, :update, :destroy]
   
   root 'homepages#index'
 end

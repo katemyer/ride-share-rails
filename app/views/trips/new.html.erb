@@ -15,5 +15,8 @@
   <%= f.label :passenger_id %>
   <%= f.text_field :passenger_id, value: @passenger_id %>
 
+   <%= f.label :rating %>
+  <%= f.text_field :rating, value: 3 %>
+
   <%= f.submit "Request Trip", class: "trip-button" %>
 <% end %>
