@@ -1,8 +1,18 @@
 class DriversController < ApplicationController
+  #Pages Requiremnt
+  LIST_PER_PAGE = 10
+
   # https://stackoverflow.com/a/34252150
   skip_before_action :verify_authenticity_token
+
   def index
-    @drivers = Driver.all #Driver is pulling data from the Drivers table in our database
+    #Manually do pages: https://www.youtube.com/watch?v=ickfSasKfts
+    #fetch = get this page http://localhost:3000/drivers?page=2, default to page 0
+    @page = params.fetch(:page, 0).to_i
+    #Retrieved all drivers, ascending order, list 10 per page
+    @drivers = Driver.all.order(id: :asc).offset(@page * LIST_PER_PAGE).limit(LIST_PER_PAGE)
+    #Getting last page
+    @last_page = Driver.all.count / LIST_PER_PAGE
   end
 
   def show
