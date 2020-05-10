@@ -29,7 +29,7 @@ class Driver < ApplicationRecord
     total_ratings = 0
     total_trips = 0
     average_rating = 0
-    
+    #self.trips = Trip.where(driver_id:self.id)
     self.trips.each do |trip|
       # if trip cost is not nil, the trip is complete
       if trip.cost != nil 
