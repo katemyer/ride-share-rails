@@ -1,0 +1,18 @@
+<h1>Trip History</h1>
+
+<table style="text-align: center;">
+  <tr>
+    <th>Driver</th>
+    <th>Passenger</th>
+    <th>Date</th>
+    <th>Rating</th>
+    <th>Cost</th>
+  </tr>
+  <tr>
+  <td><%= link_to @trip.driver.name, driver_path(@trip.driver.id) %></td>
+  <td><%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id) %></td>
+    <td><%= @trip[:date] %></td>
+    <td><%= @trip[:rating] %></td>
+    <td>$<%= @trip[:cost] %></td>
+  </tr>
+</table>

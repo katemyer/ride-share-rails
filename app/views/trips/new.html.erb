@@ -1,0 +1,15 @@
+<h2>Request a Trip</h2>
+<%= form_with model: @trip, class: 'create-trip' do |f| %>
+
+  <%= f.label :date %>
+  <%= f.text_field :date, value: @date %>
+
+  <%= f.label :cost %>
+  <%= f.text_field :cost, value: cost %>
+
+  <%= f.label :driver_id %>
+  <%= f.text_field :driver_id, value: @driver %>
+  <%= f.select :passenger_id, @passengers.map{ |passenger| [passenger.name, passenger.id] }%>
+
+  <%= f.submit "Request Trip", class: "trip-button" %>
+<% end %>
