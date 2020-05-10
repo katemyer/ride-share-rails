@@ -2,21 +2,23 @@
 
 <table style="text-align: center;">
   <tr>
-    <th>ID</th>
-    <th>Driver</th>
-    <th>Passenger</th>
+    <th>Trip Details</th>
+    <th>Driver ID</th>
+    <th>Passenger ID</th>
     <th>Date</th>
     <th>Rating</th>
     <th>Cost</th>
   </tr>
     <% @trips.each do |trip|  %>
   <tr>
-    <td><%= link_to trip.id, trips_path(trip.id) %></td>
-    <td><%= trip.driver.name %></td>
-    <td><%= trip.passenger.name %></td>
+  <td><%= link_to "Show details", trip %></td>
+  <td><%= trip.driver_id %></td>
+    <td><%= trip.passenger_id %></td>
     <td><%= trip[:date] %></td>
     <td><%= trip[:rating] %></td>
-    <td><%= trip[:cost] %></td>
+    <td>$<%= trip[:cost] %></td>
+    <td><%= link_to "Edit", edit_trip_path(trip.id), method: :get %> </td>
+    <td><%= link_to "Delete", trip_path(trip.id), method: :delete, data: {confirm: "Are you super sure?"}%></td>
   </tr>
   <% end %>
 </table>

@@ -1,4 +1,5 @@
 class PassengersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   
   def index
     @passengers = Passenger.all
@@ -70,5 +71,4 @@ end
     redirect_to passenger_path
     return
   end
-
 end
