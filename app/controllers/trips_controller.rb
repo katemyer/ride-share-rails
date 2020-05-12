@@ -1,7 +1,13 @@
 class TripsController < ApplicationController
+  #Pages Requiremnt
+  LIST_PER_PAGE = 10
+
   skip_before_action :verify_authenticity_token
+
   def index
-    @trips = Trip.all
+    @page = params.fetch(:page, 0).to_i
+    @trips = Trip.all.order(id: :asc).offset(@page * LIST_PER_PAGE).limit(LIST_PER_PAGE)
+    @last_page = Trip.all.count / LIST_PER_PAGE
   end
 
   def show

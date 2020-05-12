@@ -25,7 +25,18 @@
   <% end %>
 </table>
 
+<div class="paginationlinks">
+  <%= link_to( "First Page",  trips_path(page: 0), :class => "hello") %>
+  |
+  <%= link_to "Next Page", trips_path(page: @page + 1) %>
 
+  <%#https://ask.puppet.com/question/3420/if-else-statement-in-erb-template/%>
+  <% if @page != 0 %> 
+  |      
+    <%= link_to "Previous Page", trips_path(page: @page - 1) %> |
+    <%= link_to "Last Page", trips_path(page: @last_page) %>
+  <% end %>
+</div>
 
 
 
