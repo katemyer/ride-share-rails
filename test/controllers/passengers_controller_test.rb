@@ -115,7 +115,7 @@ describe PassengersController do
         must_respond_with :not_found
       end
       
-      it "does not create a driver if the form data violates Passenger validations, and responds with a redirect" do
+      it "does not create a passenger if the form data violates Passenger validations, and responds with a redirect" do
         # Note: This will not pass until ActiveRecord Validations lesson
         # Arrange
         # Ensure there is an existing driver saved
@@ -137,7 +137,7 @@ describe PassengersController do
         
         # Assert
         # Check that the controller redirects
-        must_redirect_to passengers_path
+        must_respond_with :success
         
       end
     end
