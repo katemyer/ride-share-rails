@@ -17,8 +17,6 @@
     <td>$<%= @passenger.total_expenses %></td>
     <td><%= link_to "Edit", edit_passenger_path(@passenger.id), method: :get %> </td>
     <td><%= link_to "Delete", passenger_path(@passenger.id), method: :delete, data: {confirm: "Are you super sure?"}%></td>
-   <%# Problematic line below %>
-    <%# <td><%= link_to "Request a Trip", #deleted because it made no sense %></td>
   </tr>
 </table>
 
