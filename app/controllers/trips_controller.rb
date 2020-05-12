@@ -9,6 +9,7 @@ class TripsController < ApplicationController
     @trip = Trip.find_by(id: trip_id)
 
     if @trip.nil?
+      head :not_found
       return
     end
   end
