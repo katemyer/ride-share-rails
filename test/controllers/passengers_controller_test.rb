@@ -67,8 +67,9 @@ describe PassengersController do
         }.must_differ "Passenger.count", 0
         
         # Assert
-        # Check that the controller redirects
-        must_redirect_to passengers_path
+        # Check that the controller renders
+        #must_redirect_to passengers_path
+        must_respond_with :success
       end
     end
     
