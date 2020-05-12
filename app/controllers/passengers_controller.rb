@@ -23,7 +23,7 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: params[:id])
 
     if @passenger.nil?
-      head :not_found
+      redirect_to root_path
       return
     end
   end
