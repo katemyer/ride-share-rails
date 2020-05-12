@@ -90,7 +90,7 @@ describe DriversController do
 
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not create a driver if the form data violates Driver validations, and responds with a render" do
       # Note: This will not pass until ActiveRecord Validations lesson
       # Arrange
       # Set up the form data so that it violates Driver validations
@@ -107,7 +107,7 @@ describe DriversController do
 
       # Assert
       # Check that the controller redirects
-      must_redirect_to drivers_path
+      must_respond_with :success
     end
   end
   
@@ -171,7 +171,7 @@ describe DriversController do
 
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not create a driver if the form data violates Driver validations, and responds with a render" do
       # Note: This will not pass until ActiveRecord Validations lesson
       # Arrange
       # Ensure there is an existing driver saved
@@ -192,8 +192,8 @@ describe DriversController do
       }.must_differ "Driver.count", 0
 
       # Assert
-      # Check that the controller redirects
-      must_redirect_to drivers_path
+      # Check that the controller renders
+      must_respond_with :success
 
     end
   end
