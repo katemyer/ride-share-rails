@@ -103,15 +103,17 @@ class TripsController < ApplicationController
     }
     #create the trip
     a_trip = Trip.new(request_trip_params)
-      #passenger_id
-      #driver_id
-      #cost
-      #rating
-      #date
-    #save trip to db
-    a_trip.save
-    #show user the trip
-    redirect_to trip_path(a_trip.id)
+    if a_trip.save
+      #update status of driver
+      driver_id = a_trip.driver_id
+      a_trip.driver.available = false
+      a_trip.driver.save
+      redirect_to trip_path(a_trip.id) 
+      return
+    else 
+      render :new 
+      return
+    end
   end
   
 end
