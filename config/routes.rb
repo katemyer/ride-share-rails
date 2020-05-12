@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :passengers, only: [:index, :show, :create, :new, :edit, :update, :destroy]
   
   resources :trips#, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+
+  #custom route for request_trip method
+  post '/request_trip', to: 'trips#request_trip' # , as: 'request_trip_path'
   
   root 'homepages#index'
 end

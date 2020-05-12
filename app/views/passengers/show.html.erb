@@ -1,5 +1,7 @@
 <h1>Passenger Information</h1>
 
+<%= link_to "Request Trip", request_trip_path({passenger_id: @passenger.id}), method: :post %>
+|
 <%= link_to "Add Trip", new_trip_path(passenger_id: @passenger.id) %>
 <table style="text-align: center;">
   <tr>
