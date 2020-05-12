@@ -2,10 +2,10 @@ class Driver < ApplicationRecord
   #validations
   validates :name, presence: true
   validates :vin, presence: true
-
+  
   # relationship: plural because many trips could be associated with this single driver
   has_many :trips
-
+  
   #Total Revenue Method
   #https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/08-rails/model-logic.md
   #parameters: 
@@ -16,12 +16,12 @@ class Driver < ApplicationRecord
     trip_history = self.trips
     trip_history.each do |trip|
       if (trip.cost != nil) && (trip.cost > fee)
-          total_revenue += (trip.cost - fee) * 0.8
+        total_revenue += (trip.cost - fee) * 0.8
       end
     end
     return total_revenue
   end #total_revenue method
-
+  
   #Average Rating Method
   #parameters
   #returns average
@@ -42,5 +42,5 @@ class Driver < ApplicationRecord
     end
     return average_rating
   end #average_rating method
-
+  
 end #class

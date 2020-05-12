@@ -12,7 +12,6 @@ describe PassengersController do
   end
   
   describe "show" do
-    # Your tests go here
     it "responds with success when showing an existing valid passenger" do
       get passenger_path(passenger.id)
       
@@ -60,15 +59,11 @@ describe PassengersController do
           name: "Smokey",
           phone_num: " "}
         }
-        # Act-Assert
-        # Ensure that there is no change in Passenger.count
+        
         expect {
           post passengers_path, params: passenger_hash
         }.must_differ "Passenger.count", 0
         
-        # Assert
-        # Check that the controller renders
-        #must_redirect_to passengers_path
         must_respond_with :success
       end
     end
@@ -77,11 +72,8 @@ describe PassengersController do
       it "responds with success when getting the edit page for an existing, valid passenger" do
         new_passenger = Passenger.create(name: "Mau", phone_num: "999-888-7777")
         
-        
-        # Act
         get edit_passenger_path(new_passenger)
         
-        # Assert
         must_respond_with :success
       end
       
@@ -116,12 +108,7 @@ describe PassengersController do
         must_respond_with :not_found
       end
       
-      it "does not create a passenger if the form data violates Passenger validations, and responds with a redirect" do
-        # Note: This will not pass until ActiveRecord Validations lesson
-        # Arrange
-        # Ensure there is an existing driver saved
-        # Assign the existing driver's id to a local variable
-        # Set up the form data so that it violates Driver validations
+      it "does not create a passenger if the form data violates Passenger validations, and responds with a render" do
         new_passenger = Passenger.create(name: "Yara", phone_num: "787-555-5555")
         
         passenger_hash = {
@@ -130,14 +117,11 @@ describe PassengersController do
             phone_num: "787-555-5555"
           }
         }
-        # Act-Assert
-        # Ensure that there is no change in Driver.count
+        
         expect {
           patch passenger_path(new_passenger.id), params: passenger_hash
         }.must_differ "Passenger.count", 0
         
-        # Assert
-        # Check that the controller redirects
         must_respond_with :success
         
       end

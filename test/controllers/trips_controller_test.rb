@@ -24,8 +24,7 @@ describe TripsController do
   
   describe "create" do
     it "can create a new trip with valid information accurately, and redirect" do
-      # Arrange
-      # Set up the form data
+      
       trip_hash = {
         trip: {
           date: Date.today,
@@ -51,7 +50,6 @@ describe TripsController do
     it "responds with success when getting the edit page for an existing, valid trip" do
       get edit_trip_path(trip)
       must_respond_with :success
-      
     end
     
     it "responds with redirect when getting the edit page for a non-existing trip" do
@@ -88,7 +86,7 @@ describe TripsController do
   describe "destroy" do
     it "destroys the trip instance in db when trip exists, then redirects" do
       new_trip = Trip.create(date: Date.today, rating: 2, cost: 30, driver_id: driver.id, passenger_id: passenger.id)
-      
+
       expect {
         delete trip_path(id: new_trip.id)
       }.must_differ 'Trip.count', -1
