@@ -45,8 +45,23 @@ class TripsController < ApplicationController
 # end
 
   def create 
+    #creating a trip, save to database
     @trip = Trip.new(trip_params)
     if @trip.save
+      #update status of driver
+      driver_id = @trip.driver_id
+      #trip has relationship with driver in trip.rb model
+      #can access driver status to set to false
+      @trip.driver.available = false
+      # save driver status to database
+      @trip.driver.save
+      #****************************
+      #Another way to change status without using relations
+      # #driver object
+      # a_driver = Driver.find_by(id: driver_id)
+      # a_driver.available = false #set status to false
+      # a_driver.save #must save driver in DB
+      #****************************
       redirect_to trip_path(@trip.id) 
       return
     else 
