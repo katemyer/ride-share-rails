@@ -1,8 +1,13 @@
 class PassengersController < ApplicationController
+  #Pages Requiremnt
+  LIST_PER_PAGE = 10
+
   skip_before_action :verify_authenticity_token
   
   def index
-    @passengers = Passenger.all
+    @page = params.fetch(:page, 0).to_i
+    @passengers = Passenger.all.order(id: :asc).offset(@page * LIST_PER_PAGE).limit(LIST_PER_PAGE)
+    @last_page = Passenger.all.count / LIST_PER_PAGE
   end
 
   def show
