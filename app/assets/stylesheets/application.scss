@@ -14,3 +14,39 @@
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 @import "**/*";
+
+/*---Header--*/
+.header {
+  background-color:#b8ebe0c2;
+  text-align: center;
+  padding: 30px;
+  font-size: 50px;
+  font-family: Optima, "Open Sans", sans-serif;
+  font-style: italic;
+  color:  #0c0c0c;
+}
+/* The navbar container */
+.topnav {
+  overflow: hidden;
+  background-color: #a197c9;
+}
+/* Navbar links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Optima, "Open Sans", sans-serif;
+  font-style: normal;
+}
+/* Links - change color on hover */
+.topnav a:hover {
+  background-color: rgb(233, 165, 202);
+  color: black;
+}
+/* Images */
+.images {
+  text-align: center;
+}

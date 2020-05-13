@@ -2,15 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-
 body {
-  font: 100% $font-stack;
-  color: $primary-color;
+  background: white;
+  font-family: Optima, "Open Sans", sans-serif;
+  font-style: normal;
+  font-size: 20px;
+  text-align: center;
 }
 
 .paginationlinks{
   margin: 100px;
+  padding: 30px;
+  background-color: rgb(250, 244, 247);
+  color: black;
 }
