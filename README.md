@@ -1,5 +1,7 @@
 # Rideshare Rails
 
+# Deployed App: https://ride-app-for-weird-village.herokuapp.com/
+
 ## At a Glance
 - Pair, [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/classroom/rule-of-three.md#stage-2) project
 - Due before class, **Wed May 13**
